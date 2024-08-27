@@ -31,7 +31,7 @@ class BaseMessageHandler(Handler):
         """Receive the message data and send it to next handlers"""
         print("Receiving Message...")
         for handler in self.next_handlers:
-            response_objt = {'text':''}
+            response_objt = {'text':'', 'user':False}
             text = handler.process_message(
                 content=data,
                 response_objt=response_objt
@@ -41,7 +41,7 @@ class BaseMessageHandler(Handler):
                 return text
             else:
                 pass
-        print('ERROR - No text found ')
+        print('ERROR - No response found ')
         return NO_PROCESSED_MESSAGE_RESPONSE
 
 
