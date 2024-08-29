@@ -5,7 +5,6 @@ body {
     font-weight: 400;
 }
 
-
 .chat_container {
     background-color: rgb(78, 102, 146);
     padding: 3.5%;
@@ -80,10 +79,11 @@ body {
 }
 
 .message_styles {
+    align-items: center;
     width: 50%;
     border-radius: 5px;
     margin-top: 3%;
-    display: flexbox;
+    display: flex;
     box-sizing: border-box;
     overflow: hidden;
     word-wrap: break-word;
@@ -95,6 +95,7 @@ body {
     animation-iteration-count: 1;
     animation-timing-function: cubic-bezier();
     position: relative;
+    padding-right: 10%;
 }
 
 @keyframes message_appear_animation {
@@ -109,12 +110,26 @@ body {
     }
 }
 
+.message_styles--image_container {
+    display: flex;
+    margin-right: 3%;
+    width: 20%;
+}
+
+.message_styles--text_container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .message_styles--header {
     display: flex;
     align-items: baseline;
     align-content: center;
     margin-bottom: 2%;
     justify-content: space-between;
+    position: relative;
+    width: 100%;
 }
 
 
@@ -126,11 +141,11 @@ body {
 .message_styles--header time {
     font-size: 10px;
     opacity: 60%;
-    padding-right: 5%;
+    padding-right: 15%;
 }
 
 .robot_message_styles {
-    background-color: rgb(3, 41, 39);
+    background-color: #032927;
 }
 .user_message_styles {
     align-self: end;
@@ -201,6 +216,10 @@ body {
 
 .messages_container--sub_button {
     height: fit-content;
-    padding: 1.7%;
-    border-radius: 5px
+    padding: 1.8%;
+    border-radius: 5px;
+    background-image: url(message.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-color: #328bc1;
 }

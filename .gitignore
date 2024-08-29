@@ -9,6 +9,9 @@ backend/venv
 # testing
 /coverage
 backend/test/__pycache__
+backend/api/__pycache__
+backend/common/__pycache__
+backend/resources/__pycache__
 __pycache__*
 
 # production
