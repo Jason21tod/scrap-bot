@@ -1,12 +1,15 @@
 body {
-    background-color: rgb(10, 21, 54);
+    background-image: url(space.png);
+    background-size: cover;
+    background-repeat: no-repeat;
     color: aliceblue;
     font-family: sans-serif;
     font-weight: 400;
+    background-color: #131313;
 }
 
 .chat_container {
-    background-color: rgb(78, 102, 146);
+    background-color: transparent;
     padding: 3.5%;
     margin: 7.5% 10% 5% 10%;
     border-radius: 10px;
@@ -35,7 +38,7 @@ body {
 .messages_field_container {
     display: flex;
     flex-direction: column;
-  }
+}
 
 .dont_awaiting_message {
     display: none;
@@ -91,11 +94,11 @@ body {
     padding-bottom: 3%;
     padding-left: 3%;
     animation-name: message_appear_animation;
-    animation-duration: 0.5s;
+    animation-duration: 0.7s;
     animation-iteration-count: 1;
     animation-timing-function: cubic-bezier();
     position: relative;
-    padding-right: 10%;
+    padding-right: 5%;
 }
 
 @keyframes message_appear_animation {
@@ -112,7 +115,7 @@ body {
 
 .message_styles--image_container {
     display: flex;
-    margin-right: 3%;
+    margin-right: 7%;
     width: 20%;
 }
 
@@ -126,7 +129,7 @@ body {
     display: flex;
     align-items: baseline;
     align-content: center;
-    margin-bottom: 2%;
+    margin-bottom: 5%;
     justify-content: space-between;
     position: relative;
     width: 100%;
@@ -141,7 +144,6 @@ body {
 .message_styles--header time {
     font-size: 10px;
     opacity: 60%;
-    padding-right: 15%;
 }
 
 .robot_message_styles {

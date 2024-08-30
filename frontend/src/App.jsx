@@ -73,7 +73,7 @@ function Message({ data }) {
       <div className={message_styles+'--text_container'}>
         <div className={message_styles+'--header'}>
           <legend>{data.subject}</legend>
-          <time>{current_time.getDate()} {current_time.getMonth()} {current_time.getFullYear()}</time>
+          <time>{current_time.getDate()}/{current_time.getMonth()}/{current_time.getFullYear()} - {current_time.getHours()}:{current_time.getMinutes()}</time>
         </div>
         <div>
           <p>{data.text}</p>
