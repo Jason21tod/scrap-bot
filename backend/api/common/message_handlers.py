@@ -1,9 +1,7 @@
 import abc
-import requests
-import bs4
+from .scrappers import *
 
-
-NO_PROCESSED_MESSAGE_RESPONSE = {'text':'I dont understand what youre saying :<'}
+NO_PROCESSED_MESSAGE_RESPONSE = {'text':'I dont understand what youre saying :<', 'request_chat': 'not_found_response'}
 CUMPRIMENT_RESPONSE = 'Hello Buddy !'
 ANALYSE_RESPONSE = 'Analysing... \n\n'
 
@@ -53,6 +51,7 @@ class CumprimentHandler(MessageHandler):
         super().process_message(content, response_objt)
         if 'hello'.capitalize() in content['text'].capitalize():
             response_objt['text'] = CUMPRIMENT_RESPONSE
+            response_objt['request_chat'] = 'cumpriment'
             return response_objt
         else:
             return False
@@ -66,6 +65,7 @@ class AnalyseHandler(MessageHandler):
         super().process_message(content, response_objt)
         if 'analyse'.capitalize() in content['text'].capitalize():
             response_objt['text'] = ANALYSE_RESPONSE
+            response_objt['request_chat'] = 'analyse'
             return self.build_message(content, response_objt)
         else:
             return False
@@ -106,13 +106,3 @@ class AnalyseHandler(MessageHandler):
             return formated_http
         return formated_http[:space_index]
 
-
-def get_from_url(url):
-    try:
-        request_result = requests.get(url)
-        print('looking for request result:', request_result.status_code)
-        if request_result.status_code != 200:
-            return False
-        return bs4.BeautifulSoup(request_result.text, features='html.parser')
-    except:
-        return False
