@@ -1,11 +1,14 @@
 from flask_restful import Resource, reqparse
-from api.common.message_handlers import BaseMessageHandler, CumprimentHandler, AnalyseHandler
+from api.common.message_handlers import *
 
 
 class AnalyseSite(Resource):
     message_handler = BaseMessageHandler()
     cumpriment_handler = CumprimentHandler()
     analyse_handler = AnalyseHandler()
+    whoiam_handler = WhoIamAmHandler()
+
+    message_handler.next_handlers.append(whoiam_handler)
     message_handler.next_handlers.append(cumpriment_handler)
     message_handler.next_handlers.append(analyse_handler)
 

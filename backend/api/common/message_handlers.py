@@ -4,6 +4,13 @@ from .scrappers import *
 NO_PROCESSED_MESSAGE_RESPONSE = {'text':'I dont understand what youre saying :<', 'request_chat': 'not_found_response'}
 CUMPRIMENT_RESPONSE = 'Hello Buddy !'
 ANALYSE_RESPONSE = 'Analysing... \n\n'
+WHO_IAM = """
+    Im Jason Scrapbot, Created by Gian ( or Jason if u want ;) )
+
+    All my functionalites are made to get infos from the sites, if you want
+    to support, pls, help on github with a pull request: 
+    <a href="https://github.com/Jason21tod/scrap-bot"> Click here to contribute ! </a>
+"""
 
 
 class Handler(abc.ABC):
@@ -106,3 +113,17 @@ class AnalyseHandler(MessageHandler):
             return formated_http
         return formated_http[:space_index]
 
+
+class WhoIamAmHandler(MessageHandler):
+    def __init__(self) -> None:
+        super().__init__()
+
+    def process_message(self, content, response_objt):
+        super().process_message(content, response_objt)
+        if 'who are you'.capitalize() in content['text'].capitalize():
+            response_objt['text'] = WHO_IAM
+            response_objt['request_chat'] = 'who_i_am'
+            return response_objt
+        else:
+            return False
+        
