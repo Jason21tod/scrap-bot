@@ -92,7 +92,7 @@ function ServerStatus () {
   const [server_status, setServerStatus] = useState('server_status server_status--connecting')
 
   useEffect(() => {
-    axios.post(API_ADDRESS+'analyse', { text: 'hello', user: true })
+    axios.post(API_ADDRESS+'/analyse', { text: 'hello', user: true })
       .then((res) => {
         console.log(res.data);
         setServerStatusText('Connection established');
@@ -122,7 +122,7 @@ function UserMessageFields({ addMessage }) {
     sender_message.subject= 'User';
     addMessage(sender_message);
     setAwaiting('message_styles awaiting_message');
-    axios.post(API_ADDRESS+'analyse', sender_message)
+    axios.post(API_ADDRESS+'/analyse', sender_message)
       .then((res) => {
         console.log(res.data);
         res.data.subject = 'Robot';
