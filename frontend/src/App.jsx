@@ -11,6 +11,8 @@ const ERROR_DATA = {
   text: 'error on connection'
 }
 
+const API_ADDRESS = "https://117c-2804-45c4-54c-900-5843-acd5-2eca-b46d.ngrok-free.app"
+
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -90,7 +92,7 @@ function ServerStatus () {
   const [server_status, setServerStatus] = useState('server_status server_status--connecting')
 
   useEffect(() => {
-    axios.post('http://127.0.0.1:5000/analyse', { text: 'hello', user: true })
+    axios.post(API_ADDRESS+'analyse', { text: 'hello', user: true })
       .then((res) => {
         console.log(res.data);
         setServerStatusText('Connection established');
@@ -120,7 +122,7 @@ function UserMessageFields({ addMessage }) {
     sender_message.subject= 'User';
     addMessage(sender_message);
     setAwaiting('message_styles awaiting_message');
-    axios.post('http://127.0.0.1:5000/analyse', sender_message)
+    axios.post(API_ADDRESS+'analyse', sender_message)
       .then((res) => {
         console.log(res.data);
         res.data.subject = 'Robot';
