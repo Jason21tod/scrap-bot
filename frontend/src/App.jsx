@@ -11,7 +11,7 @@ const ERROR_DATA = {
   text: 'error on connection'
 }
 
-const API_ADDRESS = "https://117c-2804-45c4-54c-900-5843-acd5-2eca-b46d.ngrok-free.app"
+const API_ADDRESS = "https://ef99-45-225-192-65.ngrok-free.app"
 
 
 function App() {
