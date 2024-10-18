@@ -22,7 +22,7 @@ errors = {
 
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}}, headers=['Content-Type'], methods=['GET', 'POST', 'OPTIONS'])
 api = Api(app, errors=errors)
 
 class HelloWorld(Resource):

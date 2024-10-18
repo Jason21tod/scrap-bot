@@ -9,7 +9,10 @@ WHO_IAM = """
 
     All my functionalites are made to get infos from the sites, if you want
     to support, pls, help on github with a pull request: 
-    <a href="https://github.com/Jason21tod/scrap-bot"> Click here to contribute ! </a>
+    
+    <a href="https://github.com/Jason21tod/scrap-bot">
+    
+    Click here to contribute ! </a>
 """
 
 

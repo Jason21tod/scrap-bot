@@ -20,7 +20,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className='app'>
         <section className='chat_container'>
           <div className='chat_container--header'>
             <ServerStatus />
@@ -87,19 +87,19 @@ function Message({ data }) {
 
 function ServerStatus () {
   const [server_status_text, setServerStatusText] = useState('connecting...');
-  const [server_status, setServerStatus] = useState('server_status')
+  const [server_status, setServerStatus] = useState('server_status server_status--connecting')
 
   useEffect(() => {
-    axios.post('http://localhost:5000/analyse', { text: 'hello', user: true })
+    axios.post('http://127.0.0.1:5000/analyse', { text: 'hello', user: true })
       .then((res) => {
         console.log(res.data);
         setServerStatusText('Connection established');
-        setServerStatus('server_status--connected')
+        setServerStatus('server_status server_status--connected')
       })
       .catch((error) => {
         console.error('Cannot connect', error);
         setServerStatusText('Could not connect to the server');
-        setServerStatus('server_status--not_connected')
+        setServerStatus('server_status server_status--not_connected')
       });
   }, []);
 
@@ -120,7 +120,7 @@ function UserMessageFields({ addMessage }) {
     sender_message.subject= 'User';
     addMessage(sender_message);
     setAwaiting('message_styles awaiting_message');
-    axios.post('http://localhost:5000/analyse', sender_message)
+    axios.post('http://127.0.0.1:5000/analyse', sender_message)
       .then((res) => {
         console.log(res.data);
         res.data.subject = 'Robot';
