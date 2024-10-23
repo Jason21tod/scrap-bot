@@ -1,0 +1,104 @@
+.message_styles {
+    align-items: center;
+    width: 50%;
+    border-radius: 5px;
+    margin-top: 3%;
+    display: flex;
+    box-sizing: border-box;
+    overflow: hidden;
+    word-wrap: break-word;
+    padding-top: 2%;
+    padding-bottom: 3%;
+    padding-left: 3%;
+    animation-name: message_appear_animation;
+    animation-duration: 0.7s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier();
+    position: relative;
+    padding-right: 5%;
+}
+
+@keyframes message_appear_animation {
+    0% {
+        opacity: 0%;
+    }
+    50% {
+        opacity: 50%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
+.message_styles--image_container {
+    display: flex;
+    margin-right: 7%;
+    width: 20%;
+}
+
+.message_styles--text_container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.message_styles--header {
+    display: flex;
+    align-items: baseline;
+    align-content: center;
+    margin-bottom: 5%;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+}
+
+
+.message_styles legend {
+    font-weight: 600;
+    font-size: 135%;
+}
+
+.message_styles--header time {
+    font-size: 10px;
+    opacity: 60%;
+}
+
+.robot_message_styles {
+    background-color: #032927;
+}
+
+.user_message_styles {
+    align-self: end;
+    background-color: rgb(4, 112, 116);
+}
+
+@media screen and (max-width: 500px){
+    .message_styles {
+        align-items: center;
+        width: 90%;
+        border-radius: 5px;
+        margin-top: 3%;
+        display: flex;
+        height: 100%;
+        box-sizing: border-box;
+        word-wrap: break-word;
+        padding: 10%;
+        padding-top: 2%;
+        padding-bottom: 3%;
+        padding-left: 3%;
+        animation-name: message_appear_animation;
+        animation-duration: 0.7s;
+        animation-iteration-count: 1;
+        animation-timing-function: cubic-bezier();
+        position: relative;
+        padding-right: 5%;
+        font-size: 1.7rex;
+    }
+
+    .message_styles--image_container {
+        display: flex;
+        margin-right: 7%;
+        width: 22%;
+        scale: 0.5;
+    }
+}

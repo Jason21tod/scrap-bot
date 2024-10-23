@@ -2,7 +2,7 @@ from flask_restful import Resource, reqparse
 from api.common.message_handlers import *
 
 
-class AnalyseSite(Resource):
+class MessagePort(Resource):
     message_handler = BaseMessageHandler()
     cumpriment_handler = CumprimentHandler()
     analyse_handler = AnalyseHandler()

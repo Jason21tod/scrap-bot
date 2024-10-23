@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_restful import Resource, Api
-from .resources.resources import AnalyseSite
+from .resources.resources import MessagePort
 from flask_cors import CORS
 
 errors = {
@@ -22,7 +22,7 @@ errors = {
 
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}}, headers=['Content-Type'], methods=['GET', 'POST', 'OPTIONS'])
+CORS(app)
 api = Api(app, errors=errors)
 
 class HelloWorld(Resource):
@@ -32,7 +32,7 @@ class HelloWorld(Resource):
 
 
 api.add_resource(HelloWorld, '/')
-api.add_resource(AnalyseSite, '/analyse')
+api.add_resource(MessagePort, '/message_port')
 
 
 if __name__ == '__main__':
