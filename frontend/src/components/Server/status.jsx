@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 
-const API_ADDRESS = "http://127.0.0.1:5000";
+const API_ADDRESS = process.env.REACT_APP_API_URL;
+
+
 
 export default function ServerStatus () {
     const [server_status_text, setServerStatusText] = useState('connecting...');
