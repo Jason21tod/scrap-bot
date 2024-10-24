@@ -1,3 +1,11 @@
+body {
+    height: 100vh
+}
+
+#root {
+    height: 100%;
+}
+
 .messages_field_container {
     display: flex;
     flex-direction: column;
