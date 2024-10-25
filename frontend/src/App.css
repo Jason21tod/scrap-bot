@@ -42,8 +42,6 @@ body {
 }
 
 
-
-
 .awaiting_message {
     border-radius: 5px;
     margin-top: 5%;
@@ -82,45 +80,6 @@ body {
 }
 
 
-
-.server_status {
-    display: flex;
-    width: 12%;
-    text-align: center;
-    padding: 1%;
-    margin: 1%;
-    border-radius: 5px;
-}
-
-.server_status--connecting {
-    background-color: rgb(204, 207, 30);
-}
-
-.server_status--connected {
-    display: flex;
-    background-color: rgb(30, 207, 139);
-    width: 12%;
-    text-align: center;
-    padding: 1%;
-    margin: 1%;
-    border-radius: 5px;
-}
-
-.server_status--not_connected {
-    display: flex;
-    background-color: rgb(129, 2, 2);
-    width: 12%;
-    text-align: center;
-    padding: 1%;
-    margin: 1%;
-    border-radius: 5px;
-}
-
-
-
-
-
-
 @media screen and (max-width: 500px){
     .chat_container {
         background-color: transparent;
@@ -148,16 +107,4 @@ body {
         scrollbar-color: rgb(9, 32, 75) transparent;
         scroll-behavior: auto;
     }
-
-    .server_status {
-        display: flex;
-        width: 50%;
-        text-align: center;
-        padding: 1%;
-        margin: 1%;
-        border-radius: 5px;
-    }
-
-
-
 }
