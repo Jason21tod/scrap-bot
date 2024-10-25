@@ -15,7 +15,7 @@ body {
 .chat_container {
     background-color: transparent;
     padding: 3.5%;
-    margin: 7.5% 10% 5% 10%;
+    padding: 7.5% 10% 5% 10%;
     border-radius: 10px;
     position: sticky;
 }
@@ -38,7 +38,6 @@ body {
     overflow-y: auto;
     scrollbar-color: rgb(9, 32, 75) transparent;
     scroll-behavior: auto;
-
 }
 
 
@@ -84,7 +83,7 @@ body {
     .chat_container {
         background-color: transparent;
         padding: 3.5%;
-        margin: 5%;
+        margin: 2%;
         border-radius: 10px;
         height: 100%;
     }
