@@ -93,6 +93,7 @@ body {
         display: flex;
         justify-content: space-between;
         text-align: center;
+        position: sticky;
     }
 
     .chat_container--header h1 {
