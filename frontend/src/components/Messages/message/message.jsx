@@ -1,10 +1,11 @@
 import jason_profile from './jason-profile.png';
 import user_profile from './user-profile.png';
+import AnalyseMessage from './analyse/analyse';
+import CumprimentMessage from './cumpriment/cumpriment';
 
 import './message.css'
 
-
-const PROFILE_PHOTO = jason_profile
+let profile_photo = jason_profile
 
 
 export function Message({ data }) {
@@ -16,7 +17,7 @@ export function Message({ data }) {
     return (
         <div className={message_styles}>
         <div className={message_styles+'--image_container'}>
-            <img className={message_styles+'--image'} src={PROFILE_PHOTO} alt="Jasonbot"/>
+            <img className={message_styles+'--image'} src={profile_photo} alt="Jasonbot"/>
         </div>
         <div className={message_styles+'--text_container'}>
             <div className={message_styles+'--header'}>
@@ -31,33 +32,38 @@ export function Message({ data }) {
     );
 }
 
-function AnalyseMessage ({data}) {
-    return (
-        <>
-            <h3>{data.text}</h3>
-            <hr/>
-            <p>{data.title}</p>
-            <p>{data.lang}</p>
-            <hr />
-        </>
-    )
-}
+
 
 
 function verify_subject (is_user) {
     let message_styles = 'message_styles message_styles';
     if (is_user) {
+        profile_photo = user_profile;
         return message_styles = 'user_'+message_styles
     } else {
+        profile_photo = jason_profile;
         return message_styles = 'robot_'+message_styles
     }
 }
 
 function build_message_body (data) {
     let messages_types = {
-        "analyse": <AnalyseMessage data={data}></AnalyseMessage>
+        "analyse": <AnalyseMessage data={data}></AnalyseMessage>,
+        "cumpriment": <CumprimentMessage data={data}></CumprimentMessage>
     }
-    return messages_types[data.request_chat]
-}
+    if (data.subject === "Robot") {
+        return messages_types[data.request_chat]
+    } else {
+        return <GenericUserMessage data={data}></GenericUserMessage>
+    }
+};
+
+function GenericUserMessage({data}) {
+    return( 
+            <>
+                <p>{data.text}</p>
+            </>
+        )
+};
 
 
