@@ -1,0 +1,37 @@
+.analyse_container {
+    padding-right: 3%;
+}
+
+.analyse_container_text {
+    font-size: 1.01rem;
+    margin-bottom: 10%;
+}
+
+.analyse_container_list {
+    background-color: rgb(115, 201, 115);
+    color: black;
+    padding: 4%;
+    line-height: 150%;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 500px){
+
+    .analyse_container {
+        padding-right: 3%;
+    }
+
+    .analyse_container_text {
+        font-size: 1.01rem;
+        margin-bottom: 10%;
+    }
+
+    .analyse_container_list {
+        background-color: rgb(115, 201, 115);
+        color: black;
+        padding: 4%;
+        line-height: 150%;
+        border-radius: 10px;
+    }
+    
+}
