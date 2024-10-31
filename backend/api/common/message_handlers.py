@@ -98,8 +98,9 @@ class AnalyseHandler(MessageHandler):
     def build_soup_response(self, soup, response_objt):
         """Use BeautifullSoup object to format the text"""
         response_objt['text'] += f'Here is it ;)  \n\n'
-        response_objt['title'] = f"Title Tag: {soup.title.contents}"
-        response_objt['lang'] = f"Lang Tag: {soup.html.attrs['lang']}"
+        response_objt['title'] = f"{soup.title.contents}"
+        response_objt['lang'] = f"{soup.html.attrs['lang']}"
+        response_objt['links'] = separate_all_links(get_all_links(soup))
         return response_objt
 
     def build_no_soup_response(self, response_objt):

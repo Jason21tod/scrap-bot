@@ -8,7 +8,8 @@ def get_from_url(url):
         print('looking for request result:', request_result.status_code)
         if request_result.status_code != 200:
             return False
-        return bs4.BeautifulSoup(request_result.text, features='html.parser')
+        soup = bs4.BeautifulSoup(request_result.text, features='html.parser')
+        return soup
     except:
         return False
 
