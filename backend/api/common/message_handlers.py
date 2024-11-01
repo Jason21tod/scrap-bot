@@ -1,6 +1,9 @@
 import abc
 from .scrappers import *
 
+
+
+
 NO_PROCESSED_MESSAGE_RESPONSE = {'text':'I dont understand what youre saying :<', 'request_chat': 'not_found_response'}
 CUMPRIMENT_RESPONSE = 'Hello Buddy !'
 ANALYSE_RESPONSE = 'Analysing... \n\n'
@@ -16,6 +19,16 @@ WHO_IAM = """
 """
 
 
+def build_response_data(text= '', content= {}, content_type= '', user= False):
+    data = {
+        'text':text,
+        'user': user,
+        'content': content,
+        'content_type': content_type
+    }
+    return data
+
+
 class Handler(abc.ABC):
     """
     Class That Represents the handlers of messages.
@@ -27,7 +40,7 @@ class Handler(abc.ABC):
 
 
 class MessageHandler(Handler):
-    """Class that porocess a message on the server."""
+    """Class that process a message on the server."""
     @abc.abstractmethod
     def process_message(self, content, response_objt):
         print('receiving content: ', content, '- in ', self.__str__())
@@ -39,7 +52,7 @@ class BaseMessageHandler(Handler):
         """Receive the message data and send it to next handlers"""
         print("Receiving Message...")
         for handler in self.next_handlers:
-            response_objt = {'text':'', 'user':False}
+            response_objt = build_response_data()
             text = handler.process_message(
                 content=data,
                 response_objt=response_objt
@@ -61,7 +74,7 @@ class CumprimentHandler(MessageHandler):
         super().process_message(content, response_objt)
         if 'hello'.capitalize() in content['text'].capitalize():
             response_objt['text'] = CUMPRIMENT_RESPONSE
-            response_objt['request_chat'] = 'cumpriment'
+            response_objt['content_type'] = 'cumpriment'
             return response_objt
         else:
             return False
@@ -75,7 +88,7 @@ class AnalyseHandler(MessageHandler):
         super().process_message(content, response_objt)
         if 'analyse'.capitalize() in content['text'].capitalize():
             response_objt['text'] = ANALYSE_RESPONSE
-            response_objt['request_chat'] = 'analyse'
+            response_objt['content_type'] = 'analyse'
             return self.build_message(content, response_objt)
         else:
             return False
@@ -98,9 +111,9 @@ class AnalyseHandler(MessageHandler):
     def build_soup_response(self, soup, response_objt):
         """Use BeautifullSoup object to format the text"""
         response_objt['text'] += f'Here is it ;)  \n\n'
-        response_objt['title'] = f"{soup.title.contents}"
-        response_objt['lang'] = f"{soup.html.attrs['lang']}"
-        response_objt['links'] = separate_all_links(get_all_links(soup))
+        response_objt['content']['title'] = f"{soup.title.contents}"
+        response_objt['content']['lang'] = f"{soup.html.attrs['lang']}"
+        response_objt['content']['links'] = separate_all_links(get_all_links(soup))
         return response_objt
 
     def build_no_soup_response(self, response_objt):
