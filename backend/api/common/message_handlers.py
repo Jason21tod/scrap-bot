@@ -4,7 +4,7 @@ from .scrappers import *
 
 
 
-NO_PROCESSED_MESSAGE_RESPONSE = {'text':'I dont understand what youre saying :<', 'request_chat': 'not_found_response'}
+NO_PROCESSED_MESSAGE_RESPONSE = "I don't understand what you're saying, sorry :C... Maybe, you could digit ''Help'' and i Help you with it"
 CUMPRIMENT_RESPONSE = 'Hello Buddy !'
 ANALYSE_RESPONSE = 'Analysing... \n\n'
 WHO_IAM = """
@@ -63,7 +63,9 @@ class BaseMessageHandler(Handler):
             else:
                 pass
         print('ERROR - No response found ')
-        return NO_PROCESSED_MESSAGE_RESPONSE
+        response_objt['content_type'] = 'no_response_found'
+        response_objt['text'] = NO_PROCESSED_MESSAGE_RESPONSE
+        return response_objt
 
 
 class CumprimentHandler(MessageHandler):

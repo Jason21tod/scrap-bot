@@ -49,10 +49,11 @@ function verify_subject (is_user) {
 function build_message_body (data) {
     let messages_types = {
         "analyse": <AnalyseMessage data={data}></AnalyseMessage>,
-        "cumpriment": <CumprimentMessage data={data}></CumprimentMessage>
+        "cumpriment": <CumprimentMessage data={data}></CumprimentMessage>,
+        "no_response_found": <CumprimentMessage data={data}></CumprimentMessage>
     }
     if (data.subject === "Robot") {
-        return messages_types[data.request_chat]
+        return messages_types[data.content_type]
     } else {
         return <GenericUserMessage data={data}></GenericUserMessage>
     }
