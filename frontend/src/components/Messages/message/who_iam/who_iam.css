@@ -1,0 +1,18 @@
+.who_iam--text {
+    word-wrap: break-word;
+}
+
+.who_iam--button {
+    background-color: aqua;
+    padding: 2%;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 1%;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.who_iam--button:active {
+    background-color: blue;
+    color: aqua;
+}

@@ -2,6 +2,7 @@ import jason_profile from './jason-profile.png';
 import user_profile from './user-profile.png';
 import AnalyseMessage from './analyse/analyse';
 import CumprimentMessage from './cumpriment/cumpriment';
+import WhoIAmMessage from './who_iam/who_iam';
 
 import './message.css'
 
@@ -24,15 +25,11 @@ export function Message({ data }) {
                 <legend>{data.subject}</legend>
                 <time>{current_time.getDate()}/{current_time.getMonth()}/{current_time.getFullYear()} - {current_time.getHours()}:{current_time.getMinutes()}</time>
             </div>
-            <div>
-                {build_message_body(data)}
-            </div>
+            {build_message_body(data)}
         </div>
         </div>
     );
 }
-
-
 
 
 function verify_subject (is_user) {
@@ -50,7 +47,8 @@ function build_message_body (data) {
     let messages_types = {
         "analyse": <AnalyseMessage data={data}></AnalyseMessage>,
         "cumpriment": <CumprimentMessage data={data}></CumprimentMessage>,
-        "no_response_found": <CumprimentMessage data={data}></CumprimentMessage>
+        "no_response_found": <CumprimentMessage data={data}></CumprimentMessage>,
+        "who_i_am": <WhoIAmMessage data={data}></WhoIAmMessage>
     }
     if (data.subject === "Robot") {
         return messages_types[data.content_type]

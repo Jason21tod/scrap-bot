@@ -73,19 +73,25 @@
 }
 
 @media screen and (max-width: 500px){
+    .message_styles--text_container {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+    }
     .message_styles {
         align-items: center;
+        overflow: visible;
         width: 90%;
         border-radius: 5px;
         margin-top: 3%;
         display: flex;
         height: 100%;
         box-sizing: border-box;
-        word-wrap: break-word;
         padding: 10%;
         padding-top: 2%;
         padding-bottom: 3%;
         padding-left: 3%;
+        padding-right: 3%;
         animation-name: message_appear_animation;
         animation-duration: 0.7s;
         animation-iteration-count: 1;
@@ -101,4 +107,11 @@
         width: 22%;
         scale: 0.5;
     }
+
+    .message_styles--text_container {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+    }
+    
 }

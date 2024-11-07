@@ -1,21 +1,14 @@
 import abc
 from .scrappers import *
 
-
-
-
 NO_PROCESSED_MESSAGE_RESPONSE = "I don't understand what you're saying, sorry :C... Maybe, you could digit ''Help'' and i Help you with it"
 CUMPRIMENT_RESPONSE = 'Hello Buddy !'
 ANALYSE_RESPONSE = 'Analysing... \n\n'
 WHO_IAM = """
-    Im Jason Scrapbot, Created by Gian ( or Jason if u want ;) )
+Im Jason Scrapbot, Created by Gian ( or Jason if u want ;) )
 
-    All my functionalites are made to get infos from the sites, if you want
-    to support, pls, help on github with a pull request: 
-    
-    <a href="https://github.com/Jason21tod/scrap-bot">
-    
-    Click here to contribute ! </a>
+All my functionalites are made to get infos from the sites, if you want
+to support, pls, help on github with a pull request: 
 """
 
 
@@ -141,7 +134,8 @@ class WhoIamAmHandler(MessageHandler):
         super().process_message(content, response_objt)
         if 'who are you'.capitalize() in content['text'].capitalize():
             response_objt['text'] = WHO_IAM
-            response_objt['request_chat'] = 'who_i_am'
+            response_objt['content_type'] = 'who_i_am'
+            response_objt['content']['respository_link'] = "https://github.com/Jason21tod/scrap-bot"
             return response_objt
         else:
             return False
