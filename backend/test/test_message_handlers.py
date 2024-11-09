@@ -28,7 +28,7 @@ class TestMessageHandlers(unittest.TestCase):
     def test_error_no_process_message(self):
         self.assertEqual(
             self.base_message_handler_mock.receive_message(ERR_DATA),
-            NO_PROCESSED_MESSAGE_RESPONSE
+            no_processed_message_response
         )
 
     def test_process_message_by_base(self):
