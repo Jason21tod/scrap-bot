@@ -33,3 +33,10 @@ def separate_all_links(links):
         else:
             formated_links['internal_links'].append(link)
     return formated_links
+
+def get_all_images(soup: bs4.BeautifulSoup):
+    imgs = soup.find_all('img')
+    print(f'Found {len(imgs)} images')
+    print(f'Found {imgs} images')
+    
+    return len(imgs)

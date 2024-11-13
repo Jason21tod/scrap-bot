@@ -94,6 +94,7 @@ class AnalyseHandler(MessageHandler):
         response_objt.content['title'] = f"{soup.title.contents}"
         response_objt.content['lang'] = f"{soup.html.attrs['lang']}"
         response_objt.content['links'] = separate_all_links(get_all_links(soup))
+        response_objt.content['imgs'] = get_all_images(soup)
         return response_objt
 
     def build_no_soup_response(self, response_objt: _Response):
