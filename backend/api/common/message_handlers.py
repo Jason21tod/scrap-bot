@@ -26,11 +26,12 @@ class MessageHandler(Handler):
     """Class that process a message on the server."""
     @abc.abstractmethod
     def process_message(self, content):
-        print('receiving content: ', content, '- in ', self.__str__())
         """Method that process the message or pass to the next handlers"""
+        print('receiving content: ', content, '- in ', self.__str__())
         return _Response()
 
 class BaseMessageHandler(Handler):
+    """Base Message Handler recieve the message then, send it to the next handlers"""
     def receive_message(self, data):
         """Receive the message data and send it to next handlers"""
         print("Receiving Message...")
@@ -48,6 +49,7 @@ class BaseMessageHandler(Handler):
 
 
 class CumprimentHandler(MessageHandler):
+    """Handler that verify if the message is a cumpriment"""
     def __init__(self) -> None:
         super().__init__()
     
@@ -62,6 +64,7 @@ class CumprimentHandler(MessageHandler):
 
 
 class AnalyseHandler(MessageHandler):
+    """Handler that verify if the message is a analyse request"""
     def __init__(self) -> None:
         super().__init__()
     
@@ -73,17 +76,19 @@ class AnalyseHandler(MessageHandler):
             return False
         
     def build_message(self, content, response_objt: _Response):
-        """Build the messages and return"""
+        """Build the messages and return. If the 'http' is not on the text field, it should return a error text:
+        
+        'Please provide a valid link, i could not find'"""
         if 'http' in content['text']:
             url = self.format_url(content)
             soup = get_from_url(url)
-            return self.make_verifications(soup, response_objt)
+            return self.is_soup(soup, response_objt)
         else:
             response_objt.text += 'Please provide a valid link, i could not find'
             return response_objt
     
-    def make_verifications(self, soup, response_objt: _Response):
-        """Make Soup Verifications"""
+    def is_soup(self, soup, response_objt: _Response):
+        """Verify is the object its a valid soup"""
         if not soup: return self.build_no_soup_response(response_objt)
         return self.build_soup_response(soup, response_objt)
 
@@ -103,7 +108,7 @@ class AnalyseHandler(MessageHandler):
         return response_objt
 
     def format_url(self, content):
-        """Method that find and format url in the message"""
+        """Method that find, format and extract url in the text field"""
         http_location = content['text'].find('http')
         formated_http = content['text'][http_location::]
         space_index = formated_http.find(' ')
@@ -113,6 +118,7 @@ class AnalyseHandler(MessageHandler):
 
 
 class WhoIamAmHandler(MessageHandler):
+    """Handler that Verify if the message is a request about who the robot is"""
     def __init__(self) -> None:
         super().__init__()
 

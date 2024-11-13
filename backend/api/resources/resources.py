@@ -3,6 +3,7 @@ from api.common.message_handlers import *
 
 
 class MessagePort(Resource):
+    """Resource responsible for receive the content of the messafe and return a response"""
     message_handler = BaseMessageHandler()
     cumpriment_handler = CumprimentHandler()
     analyse_handler = AnalyseHandler()

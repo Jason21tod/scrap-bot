@@ -2,7 +2,7 @@ from abc import ABC
 
 
 class _Response(ABC):
-    """Class that represents a response in code."""
+    """Class that represents a response in chat context. Its the most commom type of response."""
     def __init__(self, text: str ='', content_type: str = '', user: bool = False) -> None:
         super().__init__()
         self.text: str = text
