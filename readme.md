@@ -6,5 +6,7 @@ Hello ! Welcome to my project. In this code, im planning to do a bot that retrie
 
 * APIs
 * Web Scraping
-* Database
-* Authentication
+* React
+* Flask
+* Python
+* Code Architecture
